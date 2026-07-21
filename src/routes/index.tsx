@@ -593,11 +593,11 @@ const PROJETOS = [
   { img: g1Asset.url, span: "md:col-span-2 md:row-span-2" },
   { img: g2Asset.url, span: "" },
   { img: g3Asset.url, span: "md:col-span-2" },
-  { img: g11Asset.url, span: "" },
+  { img: g11Asset.url, span: "md:col-span-2" },
   { img: g7Asset.url, span: "md:col-span-2" },
   { img: g4Asset.url, span: "" },
   { img: g18Asset.url, span: "md:col-span-2 md:row-span-2" },
-  { img: g19Asset.url, span: "" },
+  { img: g19Asset.url, span: "md:col-span-2" },
   { img: g20Asset.url, span: "md:col-span-2" },
   { img: g21Asset.url, span: "" },
   { img: g12Asset.url, span: "md:col-span-2" },
@@ -610,7 +610,7 @@ const PROJETOS = [
   { img: g16Asset.url, span: "md:col-span-2" },
   { img: g9Asset.url, span: "" },
   { img: g13Asset.url, span: "md:col-span-2" },
-  { img: g14Asset.url, span: "" },
+  { img: g14Asset.url, span: "md:col-span-2" },
   { img: g5Asset.url, span: "" },
   { img: g10Asset.url, span: "" },
 ];
@@ -640,7 +640,7 @@ function Projetos() {
           </div>
         </div>
 
-        <div className="mt-14 grid auto-rows-[220px] grid-cols-1 gap-3 sm:auto-rows-[240px] md:grid-cols-4 md:gap-4 lg:auto-rows-[280px]">
+        <div className="mt-14 grid auto-rows-[220px] grid-cols-1 gap-3 sm:auto-rows-[240px] md:grid-cols-4 md:gap-4 md:grid-flow-dense lg:auto-rows-[280px]">
           {PROJETOS.map((p, i) => (
             <Reveal key={i} delay={i * 60} className={`h-full ${p.span}`}>
               <figure className="group relative h-full w-full overflow-hidden bg-white/5">
