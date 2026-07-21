@@ -37,7 +37,7 @@ import g24Asset from "@/assets/1_46.JPG.asset.json";
 import g25Asset from "@/assets/1_51.jpg.asset.json";
 import g26Asset from "@/assets/1_59.jpg.asset.json";
 import g27Asset from "@/assets/1_9-2.jpg.asset.json";
-import g28Asset from "@/assets/1_22.JPG.asset.json";
+
 import g29Asset from "@/assets/1_23.JPG.asset.json";
 import g30Asset from "@/assets/1_26.jpg.asset.json";
 import g31Asset from "@/assets/1_34.JPG.asset.json";
