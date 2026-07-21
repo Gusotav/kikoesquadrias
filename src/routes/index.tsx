@@ -628,7 +628,7 @@ const PROJETOS = [
   { img: g18Asset.url, span: "" },
   { img: g12Asset.url, span: "" },
   { img: g16Asset.url, span: "md:col-span-2" },
-  // Portfólio completo — 21 itens (soma 28 células = 7 linhas)
+  // Portfólio completo — 20 itens (soma 28 células = 7 linhas)
   { img: g22Asset.url, span: "md:col-span-2" },
   { img: g4Asset.url, span: "" },
   { img: g27Asset.url, span: "" },
@@ -646,9 +646,8 @@ const PROJETOS = [
   { img: g17Asset.url, span: "" },
   { img: g31Asset.url, span: "md:col-span-2" },
   { img: g10Asset.url, span: "" },
-  { img: g5Asset.url, span: "" },
-  { img: g28Asset.url, span: "md:col-span-2" },
-  { img: g29Asset.url, span: "" },
+  { img: g5Asset.url, span: "md:col-span-2" },
+  { img: g29Asset.url, span: "md:col-span-2" },
   { img: g2Asset.url, span: "" },
 ];
 
