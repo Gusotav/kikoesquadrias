@@ -795,14 +795,14 @@ function Projetos() {
           </button>
 
           <figure
-            className="relative flex h-full w-full items-center justify-center px-4 py-16 md:px-20 md:py-12"
-            onClick={(e) => e.stopPropagation()}
+            className="pointer-events-none relative flex h-full w-full items-center justify-center px-4 py-16 md:px-20 md:py-12"
           >
             <img
               key={PROJETOS[lightboxIdx].img}
               src={PROJETOS[lightboxIdx].img}
               alt="Projeto Kiko Esquadrias em tamanho ampliado"
-              className="max-h-full max-w-full object-contain shadow-2xl animate-in fade-in zoom-in-95 duration-300"
+              onClick={(e) => e.stopPropagation()}
+              className="pointer-events-auto max-h-full max-w-full object-contain shadow-2xl animate-in fade-in zoom-in-95 duration-300"
             />
           </figure>
 
