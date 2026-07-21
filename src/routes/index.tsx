@@ -640,7 +640,7 @@ function Projetos() {
           </div>
         </div>
 
-        <div className="mt-14 grid auto-rows-[220px] grid-cols-1 gap-3 sm:auto-rows-[240px] md:grid-cols-4 md:gap-4 lg:auto-rows-[280px]">
+        <div className="mt-14 grid auto-rows-[220px] grid-cols-1 gap-3 sm:auto-rows-[240px] md:grid-cols-4 md:gap-4 md:grid-flow-dense lg:auto-rows-[280px]">
           {PROJETOS.map((p, i) => (
             <Reveal key={i} delay={i * 60} className={`h-full ${p.span}`}>
               <figure className="group relative h-full w-full overflow-hidden bg-white/5">
