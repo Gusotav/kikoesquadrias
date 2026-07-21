@@ -33,6 +33,14 @@ import g20Asset from "@/assets/1_30.JPG.asset.json";
 import g21Asset from "@/assets/1_31.JPG.asset.json";
 import g22Asset from "@/assets/1_42.JPG.asset.json";
 import g23Asset from "@/assets/1_43.JPG.asset.json";
+import g24Asset from "@/assets/1_46.JPG.asset.json";
+import g25Asset from "@/assets/1_51.jpg.asset.json";
+import g26Asset from "@/assets/1_59.jpg.asset.json";
+import g27Asset from "@/assets/1_9-2.jpg.asset.json";
+import g28Asset from "@/assets/1_22.JPG.asset.json";
+import g29Asset from "@/assets/1_23.JPG.asset.json";
+import g30Asset from "@/assets/1_26.jpg.asset.json";
+import g31Asset from "@/assets/1_34.JPG.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
