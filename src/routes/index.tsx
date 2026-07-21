@@ -23,6 +23,16 @@ import g10Asset from "@/assets/1_6.jpg.asset.json";
 import g11Asset from "@/assets/1_7.jpg.asset.json";
 import g12Asset from "@/assets/1_8.jpg.asset.json";
 import g13Asset from "@/assets/1_9.jpg.asset.json";
+import g14Asset from "@/assets/1_48.jpg.asset.json";
+import g15Asset from "@/assets/1_55.jpg.asset.json";
+import g16Asset from "@/assets/1_56.jpg.asset.json";
+import g17Asset from "@/assets/1_58.jpg.asset.json";
+import g18Asset from "@/assets/1_60-2.jpg.asset.json";
+import g19Asset from "@/assets/1_61.jpg.asset.json";
+import g20Asset from "@/assets/1_30.JPG.asset.json";
+import g21Asset from "@/assets/1_31.JPG.asset.json";
+import g22Asset from "@/assets/1_42.JPG.asset.json";
+import g23Asset from "@/assets/1_43.JPG.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -580,110 +590,29 @@ function Diferenciais() {
 /* ----------------------------- Projetos ----------------------------- */
 
 const PROJETOS = [
-  {
-    img: g1Asset.url,
-    name: "Residência Iporanga",
-    loc: "São Paulo · SP",
-    tipo: "Portas de correr + folhas pivotantes",
-    dest: "Vãos amplos com veneziana em madeira e alumínio",
-    span: "md:col-span-2 md:row-span-2",
-  },
-  {
-    img: g2Asset.url,
-    name: "Casa da Serra",
-    loc: "Petrópolis · RJ",
-    tipo: "Fachada envidraçada estrutural",
-    dest: "Perfis mínimos e vidro laminado acústico",
-    span: "",
-  },
-  {
-    img: g3Asset.url,
-    name: "Retiro do Mar",
-    loc: "Angra dos Reis · RJ",
-    tipo: "Guillotine + brises artesanais",
-    dest: "Integração total com o entorno natural",
-    span: "md:col-span-2",
-  },
-  {
-    img: g11Asset.url,
-    name: "Cobertura Beira-Mar",
-    loc: "Rio de Janeiro · RJ",
-    tipo: "Sistema de correr panorâmico",
-    dest: "Vãos contínuos com vista para o oceano",
-    span: "",
-  },
-  {
-    img: g7Asset.url,
-    name: "Apartamento Vista Praia",
-    loc: "Rio de Janeiro · RJ",
-    tipo: "Esquadrias de correr em vidro temperado",
-    dest: "Máxima entrada de luz e ventilação natural",
-    span: "md:col-span-2",
-  },
-  {
-    img: g4Asset.url,
-    name: "Residência Noturna",
-    loc: "Belo Horizonte · MG",
-    tipo: "Portas de correr em pele de vidro",
-    dest: "Estrutura em alumínio negro fosco",
-    span: "",
-  },
-  {
-    img: g12Asset.url,
-    name: "Refúgio na Mata",
-    loc: "Nova Lima · MG",
-    tipo: "Fachada estrutural com pele de vidro",
-    dest: "Diálogo entre arquitetura e paisagem",
-    span: "md:col-span-2 md:row-span-2",
-  },
-  {
-    img: g6Asset.url,
-    name: "Chalé Voronoi",
-    loc: "Campos do Jordão · SP",
-    tipo: "Painéis autorais em módulos geométricos",
-    dest: "Desenho exclusivo em alumínio e madeira",
-    span: "",
-  },
-  {
-    img: g8Asset.url,
-    name: "Casa Voronoi · Interior",
-    loc: "Campos do Jordão · SP",
-    tipo: "Divisórias artesanais em recorte único",
-    dest: "Detalhamento milimétrico em série pequena",
-    span: "",
-  },
-  {
-    img: g9Asset.url,
-    name: "Residência Ipanema",
-    loc: "Rio de Janeiro · RJ",
-    tipo: "Correr multi-folhas piso a teto",
-    dest: "Perfil ultra-slim com vidro insulado",
-    span: "md:col-span-2",
-  },
-  {
-    img: g13Asset.url,
-    name: "Pavilhão na Floresta",
-    loc: "Interior · SP",
-    tipo: "Pele de vidro contínua",
-    dest: "Integração total interior · exterior",
-    span: "md:col-span-2",
-  },
-  {
-    img: g5Asset.url,
-    name: "Escritório Corporativo",
-    loc: "Rio de Janeiro · RJ",
-    tipo: "Divisórias em vidro estrutural",
-    dest: "Precisão milimétrica em escala comercial",
-    span: "",
-  },
-  {
-    img: g10Asset.url,
-    name: "Sala de Reuniões",
-    loc: "Rio de Janeiro · RJ",
-    tipo: "Sistema modular em alumínio branco",
-    dest: "Acústica e transparência integradas",
-    span: "",
-  },
+  { img: g1Asset.url, span: "md:col-span-2 md:row-span-2" },
+  { img: g2Asset.url, span: "" },
+  { img: g3Asset.url, span: "md:col-span-2" },
+  { img: g11Asset.url, span: "" },
+  { img: g7Asset.url, span: "md:col-span-2" },
+  { img: g4Asset.url, span: "" },
+  { img: g18Asset.url, span: "md:col-span-2 md:row-span-2" },
+  { img: g19Asset.url, span: "" },
+  { img: g20Asset.url, span: "md:col-span-2" },
+  { img: g21Asset.url, span: "" },
+  { img: g12Asset.url, span: "md:col-span-2" },
+  { img: g6Asset.url, span: "" },
+  { img: g8Asset.url, span: "" },
+  { img: g22Asset.url, span: "md:col-span-2" },
+  { img: g23Asset.url, span: "" },
+  { img: g15Asset.url, span: "md:col-span-2" },
+  { img: g17Asset.url, span: "" },
+  { img: g16Asset.url, span: "md:col-span-2" },
+  { img: g9Asset.url, span: "" },
+  { img: g13Asset.url, span: "md:col-span-2" },
+  { img: g14Asset.url, span: "" },
+  { img: g5Asset.url, span: "" },
+  { img: g10Asset.url, span: "" },
 ];
 
 function Projetos() {
@@ -713,28 +642,16 @@ function Projetos() {
 
         <div className="mt-14 grid auto-rows-[220px] grid-cols-1 gap-3 sm:auto-rows-[240px] md:grid-cols-4 md:gap-4 lg:auto-rows-[280px]">
           {PROJETOS.map((p, i) => (
-            <Reveal key={p.name} delay={i * 80} className={`h-full ${p.span}`}>
+            <Reveal key={i} delay={i * 60} className={`h-full ${p.span}`}>
               <figure className="group relative h-full w-full overflow-hidden bg-white/5">
                 <img
                   src={p.img}
-                  alt={`${p.name} — ${p.tipo}`}
+                  alt="Projeto Kiko Esquadrias"
                   loading="lazy"
                   decoding="async"
                   className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-90 transition-opacity duration-500" />
-                <figcaption className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="font-display text-base font-semibold md:text-lg">{p.name}</h3>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-white/60">{p.loc}</span>
-                  </div>
-                  <div className="mt-1 max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:max-h-32 group-hover:opacity-100 md:mt-2">
-                    <p className="text-xs text-white/80">{p.tipo}</p>
-                    <p className="mt-1 text-xs text-white/55">{p.dest}</p>
-                  </div>
-                  {/* Always visible on mobile */}
-                  <p className="mt-1 text-xs text-white/70 md:hidden">{p.tipo}</p>
-                </figcaption>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <span className="absolute left-4 top-4 h-6 w-6 border-l border-t border-white/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <span className="absolute right-4 bottom-4 h-6 w-6 border-r border-b border-white/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               </figure>
