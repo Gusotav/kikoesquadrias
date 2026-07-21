@@ -37,7 +37,7 @@ import g24Asset from "@/assets/1_46.JPG.asset.json";
 import g25Asset from "@/assets/1_51.jpg.asset.json";
 import g26Asset from "@/assets/1_59.jpg.asset.json";
 import g27Asset from "@/assets/1_9-2.jpg.asset.json";
-import g28Asset from "@/assets/1_22.JPG.asset.json";
+
 import g29Asset from "@/assets/1_23.JPG.asset.json";
 import g30Asset from "@/assets/1_26.jpg.asset.json";
 import g31Asset from "@/assets/1_34.JPG.asset.json";
@@ -628,7 +628,7 @@ const PROJETOS = [
   { img: g18Asset.url, span: "" },
   { img: g12Asset.url, span: "" },
   { img: g16Asset.url, span: "md:col-span-2" },
-  // Portfólio completo — 21 itens (soma 28 células = 7 linhas)
+  // Portfólio completo — 20 itens (soma 28 células = 7 linhas)
   { img: g22Asset.url, span: "md:col-span-2" },
   { img: g4Asset.url, span: "" },
   { img: g27Asset.url, span: "" },
@@ -646,9 +646,8 @@ const PROJETOS = [
   { img: g17Asset.url, span: "" },
   { img: g31Asset.url, span: "md:col-span-2" },
   { img: g10Asset.url, span: "" },
-  { img: g5Asset.url, span: "" },
-  { img: g28Asset.url, span: "md:col-span-2" },
-  { img: g29Asset.url, span: "" },
+  { img: g5Asset.url, span: "md:col-span-2" },
+  { img: g29Asset.url, span: "md:col-span-2" },
   { img: g2Asset.url, span: "" },
 ];
 
