@@ -15,6 +15,14 @@ import g2Asset from "@/assets/1_60.jpg.asset.json";
 import g3Asset from "@/assets/1_25.jpg.asset.json";
 import g4Asset from "@/assets/1_11.jpg.asset.json";
 import g5Asset from "@/assets/1_3.jpg.asset.json";
+import g6Asset from "@/assets/1_1.jpg.asset.json";
+import g7Asset from "@/assets/1_2.jpg.asset.json";
+import g8Asset from "@/assets/1_4.jpg.asset.json";
+import g9Asset from "@/assets/1_5.jpg.asset.json";
+import g10Asset from "@/assets/1_6.jpg.asset.json";
+import g11Asset from "@/assets/1_7.jpg.asset.json";
+import g12Asset from "@/assets/1_8.jpg.asset.json";
+import g13Asset from "@/assets/1_9.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -597,6 +605,22 @@ const PROJETOS = [
     span: "md:col-span-2",
   },
   {
+    img: g11Asset.url,
+    name: "Cobertura Beira-Mar",
+    loc: "Rio de Janeiro · RJ",
+    tipo: "Sistema de correr panorâmico",
+    dest: "Vãos contínuos com vista para o oceano",
+    span: "",
+  },
+  {
+    img: g7Asset.url,
+    name: "Apartamento Vista Praia",
+    loc: "Rio de Janeiro · RJ",
+    tipo: "Esquadrias de correr em vidro temperado",
+    dest: "Máxima entrada de luz e ventilação natural",
+    span: "md:col-span-2",
+  },
+  {
     img: g4Asset.url,
     name: "Residência Noturna",
     loc: "Belo Horizonte · MG",
@@ -605,12 +629,60 @@ const PROJETOS = [
     span: "",
   },
   {
+    img: g12Asset.url,
+    name: "Refúgio na Mata",
+    loc: "Nova Lima · MG",
+    tipo: "Fachada estrutural com pele de vidro",
+    dest: "Diálogo entre arquitetura e paisagem",
+    span: "md:col-span-2 md:row-span-2",
+  },
+  {
+    img: g6Asset.url,
+    name: "Chalé Voronoi",
+    loc: "Campos do Jordão · SP",
+    tipo: "Painéis autorais em módulos geométricos",
+    dest: "Desenho exclusivo em alumínio e madeira",
+    span: "",
+  },
+  {
+    img: g8Asset.url,
+    name: "Casa Voronoi · Interior",
+    loc: "Campos do Jordão · SP",
+    tipo: "Divisórias artesanais em recorte único",
+    dest: "Detalhamento milimétrico em série pequena",
+    span: "",
+  },
+  {
+    img: g9Asset.url,
+    name: "Residência Ipanema",
+    loc: "Rio de Janeiro · RJ",
+    tipo: "Correr multi-folhas piso a teto",
+    dest: "Perfil ultra-slim com vidro insulado",
+    span: "md:col-span-2",
+  },
+  {
+    img: g13Asset.url,
+    name: "Pavilhão na Floresta",
+    loc: "Interior · SP",
+    tipo: "Pele de vidro contínua",
+    dest: "Integração total interior · exterior",
+    span: "md:col-span-2",
+  },
+  {
     img: g5Asset.url,
     name: "Escritório Corporativo",
     loc: "Rio de Janeiro · RJ",
     tipo: "Divisórias em vidro estrutural",
     dest: "Precisão milimétrica em escala comercial",
-    span: "md:col-span-2",
+    span: "",
+  },
+  {
+    img: g10Asset.url,
+    name: "Sala de Reuniões",
+    loc: "Rio de Janeiro · RJ",
+    tipo: "Sistema modular em alumínio branco",
+    dest: "Acústica e transparência integradas",
+    span: "",
   },
 ];
 
