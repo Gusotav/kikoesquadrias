@@ -33,6 +33,14 @@ import g20Asset from "@/assets/1_30.JPG.asset.json";
 import g21Asset from "@/assets/1_31.JPG.asset.json";
 import g22Asset from "@/assets/1_42.JPG.asset.json";
 import g23Asset from "@/assets/1_43.JPG.asset.json";
+import g24Asset from "@/assets/1_46.JPG.asset.json";
+import g25Asset from "@/assets/1_51.jpg.asset.json";
+import g26Asset from "@/assets/1_59.jpg.asset.json";
+import g27Asset from "@/assets/1_9-2.jpg.asset.json";
+import g28Asset from "@/assets/1_22.JPG.asset.json";
+import g29Asset from "@/assets/1_23.JPG.asset.json";
+import g30Asset from "@/assets/1_26.jpg.asset.json";
+import g31Asset from "@/assets/1_34.JPG.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -590,32 +598,47 @@ function Diferenciais() {
 /* ----------------------------- Projetos ----------------------------- */
 
 const PROJETOS = [
+  // Primeiros 10 — visíveis (soma 16 células = 4 linhas em 4 colunas)
   { img: g1Asset.url, span: "md:col-span-2 md:row-span-2" },
-  { img: g2Asset.url, span: "" },
-  { img: g3Asset.url, span: "md:col-span-2" },
-  { img: g11Asset.url, span: "md:col-span-2" },
-  { img: g7Asset.url, span: "md:col-span-2" },
-  { img: g4Asset.url, span: "" },
-  { img: g18Asset.url, span: "md:col-span-2 md:row-span-2" },
-  { img: g19Asset.url, span: "md:col-span-2" },
+  { img: g30Asset.url, span: "" },
+  { img: g11Asset.url, span: "" },
   { img: g20Asset.url, span: "md:col-span-2" },
-  { img: g21Asset.url, span: "" },
-  { img: g12Asset.url, span: "md:col-span-2" },
-  { img: g6Asset.url, span: "" },
-  { img: g8Asset.url, span: "" },
-  { img: g22Asset.url, span: "md:col-span-2" },
-  { img: g23Asset.url, span: "" },
+  { img: g3Asset.url, span: "" },
+  { img: g26Asset.url, span: "" },
   { img: g15Asset.url, span: "md:col-span-2" },
-  { img: g17Asset.url, span: "" },
+  { img: g18Asset.url, span: "" },
+  { img: g12Asset.url, span: "" },
   { img: g16Asset.url, span: "md:col-span-2" },
+  // Portfólio completo — 21 itens (soma 28 células = 7 linhas)
+  { img: g22Asset.url, span: "md:col-span-2" },
+  { img: g4Asset.url, span: "" },
+  { img: g27Asset.url, span: "" },
+  { img: g21Asset.url, span: "md:col-span-2" },
+  { img: g6Asset.url, span: "" },
+  { img: g7Asset.url, span: "" },
+  { img: g19Asset.url, span: "md:col-span-2" },
+  { img: g8Asset.url, span: "" },
+  { img: g13Asset.url, span: "" },
+  { img: g24Asset.url, span: "md:col-span-2" },
+  { img: g14Asset.url, span: "" },
   { img: g9Asset.url, span: "" },
-  { img: g13Asset.url, span: "md:col-span-2" },
-  { img: g14Asset.url, span: "md:col-span-2" },
-  { img: g5Asset.url, span: "" },
+  { img: g23Asset.url, span: "md:col-span-2" },
+  { img: g25Asset.url, span: "" },
+  { img: g17Asset.url, span: "" },
+  { img: g31Asset.url, span: "md:col-span-2" },
   { img: g10Asset.url, span: "" },
+  { img: g5Asset.url, span: "" },
+  { img: g28Asset.url, span: "md:col-span-2" },
+  { img: g29Asset.url, span: "" },
+  { img: g2Asset.url, span: "" },
 ];
 
+const VISIBLE_COUNT = 10;
+
 function Projetos() {
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? PROJETOS : PROJETOS.slice(0, VISIBLE_COUNT);
+
   return (
     <section id="projetos" className="relative bg-[color:var(--kiko-blue-deep)] py-20 text-white md:py-32">
       <div className="container-kiko">
@@ -641,8 +664,8 @@ function Projetos() {
         </div>
 
         <div className="mt-14 grid auto-rows-[220px] grid-cols-1 gap-3 sm:auto-rows-[240px] md:grid-cols-4 md:gap-4 md:grid-flow-dense lg:auto-rows-[280px]">
-          {PROJETOS.map((p, i) => (
-            <Reveal key={i} delay={i * 60} className={`h-full ${p.span}`}>
+          {visible.map((p, i) => (
+            <Reveal key={p.img} delay={(i % 10) * 60} className={`h-full ${p.span}`}>
               <figure className="group relative h-full w-full overflow-hidden bg-white/5">
                 <img
                   src={p.img}
@@ -657,6 +680,17 @@ function Projetos() {
               </figure>
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Button
+            variant="ghost"
+            onClick={() => setShowAll((v) => !v)}
+            className="!text-white !border-white/30 hover:!border-white"
+            ariaLabel={showAll ? "Recolher portfólio" : "Ver portfólio completo"}
+          >
+            {showAll ? "Recolher portfólio" : "Ver portfólio completo"}
+          </Button>
         </div>
       </div>
     </section>
