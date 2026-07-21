@@ -655,7 +655,28 @@ const VISIBLE_COUNT = 10;
 
 function Projetos() {
   const [showAll, setShowAll] = useState(false);
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const visible = showAll ? PROJETOS : PROJETOS.slice(0, VISIBLE_COUNT);
+
+  const closeLightbox = () => setLightboxIdx(null);
+  const prev = () => setLightboxIdx((i) => (i === null ? i : (i - 1 + PROJETOS.length) % PROJETOS.length));
+  const next = () => setLightboxIdx((i) => (i === null ? i : (i + 1) % PROJETOS.length));
+
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") prev();
+      else if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightboxIdx]);
 
   return (
     <section id="projetos" className="relative bg-[color:var(--kiko-blue-deep)] py-20 text-white md:py-32">
@@ -682,22 +703,41 @@ function Projetos() {
         </div>
 
         <div className="mt-14 grid auto-rows-[220px] grid-cols-1 gap-3 sm:auto-rows-[240px] md:grid-cols-4 md:gap-4 md:grid-flow-dense lg:auto-rows-[280px]">
-          {visible.map((p, i) => (
-            <Reveal key={p.img} delay={(i % 10) * 60} className={`h-full ${p.span}`}>
-              <figure className="group relative h-full w-full overflow-hidden bg-white/5">
-                <img
-                  src={p.img}
-                  alt="Projeto Kiko Esquadrias"
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <span className="absolute left-4 top-4 h-6 w-6 border-l border-t border-white/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <span className="absolute right-4 bottom-4 h-6 w-6 border-r border-b border-white/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </figure>
-            </Reveal>
-          ))}
+          {visible.map((p, i) => {
+            const realIdx = PROJETOS.findIndex((x) => x.img === p.img);
+            return (
+              <Reveal key={p.img} delay={(i % 10) * 60} className={`h-full ${p.span}`}>
+                <button
+                  type="button"
+                  onClick={() => setLightboxIdx(realIdx)}
+                  aria-label="Ampliar imagem do projeto"
+                  className="group relative block h-full w-full overflow-hidden bg-white/5 cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                >
+                  <img
+                    src={p.img}
+                    alt="Projeto Kiko Esquadrias"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <span className="absolute left-4 top-4 h-6 w-6 border-l border-t border-white/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <span className="absolute right-4 bottom-4 h-6 w-6 border-r border-b border-white/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-black/35 text-white backdrop-blur-sm ring-1 ring-white/25 opacity-70 transition-all duration-300 group-hover:opacity-100 group-hover:bg-black/55"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="11" cy="11" r="7" />
+                      <line x1="11" y1="8" x2="11" y2="14" />
+                      <line x1="8" y1="11" x2="14" y2="11" />
+                      <line x1="20" y1="20" x2="16.65" y2="16.65" />
+                    </svg>
+                  </span>
+                </button>
+              </Reveal>
+            );
+          })}
         </div>
 
         <div className="mt-12 flex justify-center">
@@ -711,6 +751,66 @@ function Projetos() {
           </Button>
         </div>
       </div>
+
+      {lightboxIdx !== null && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Visualização ampliada do projeto"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={closeLightbox}
+        >
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); closeLightbox(); }}
+            aria-label="Fechar"
+            className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 backdrop-blur-md transition hover:bg-white/20"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+            aria-label="Imagem anterior"
+            className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 grid h-12 w-12 md:h-14 md:w-14 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 backdrop-blur-md transition hover:bg-white/20"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); next(); }}
+            aria-label="Próxima imagem"
+            className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 grid h-12 w-12 md:h-14 md:w-14 place-items-center rounded-full bg-white/10 text-white ring-1 ring-white/20 backdrop-blur-md transition hover:bg-white/20"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+
+          <figure
+            className="relative flex h-full w-full items-center justify-center px-4 py-16 md:px-20 md:py-12"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              key={PROJETOS[lightboxIdx].img}
+              src={PROJETOS[lightboxIdx].img}
+              alt="Projeto Kiko Esquadrias em tamanho ampliado"
+              className="max-h-full max-w-full object-contain shadow-2xl animate-in fade-in zoom-in-95 duration-300"
+            />
+          </figure>
+
+          <div className="pointer-events-none absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-4 py-1.5 text-xs tracking-wide text-white/80 ring-1 ring-white/15 backdrop-blur-md">
+            {lightboxIdx + 1} / {PROJETOS.length}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
