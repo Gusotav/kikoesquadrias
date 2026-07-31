@@ -497,22 +497,6 @@ type Obra = {
 
 const OBRAS: Obra[] = [
   {
-    slug: "obra-em-parati",
-    nome: "Obra em Parati",
-    capa: p7Asset.url,
-    fotos: [
-      p7Asset.url,
-      p8Asset.url,
-      p10Asset.url,
-      p9Asset.url,
-      p3Asset.url,
-      p11Asset.url,
-      p13Asset.url,
-      p12Asset.url,
-      p1Asset.url,
-    ],
-  },
-  {
     slug: "casa-na-arvore",
     nome: "Casa na Árvore",
     capa: driveCasaNaArvore[0],
@@ -531,30 +515,13 @@ const OBRAS: Obra[] = [
     fotos: driveEscritorioQnco,
   },
   {
-    slug: "haras-indaiatuba",
-    nome: "Haras Indaiatuba",
-    capa: g1Asset.url,
-    fotos: [g1Asset.url, g2Asset.url, g18Asset.url, g20Asset.url, g16Asset.url, g17Asset.url],
-  },
-  {
-    slug: "haras-confins",
-    nome: "Obra Haras",
-    capa: g3Asset.url,
-    fotos: [g3Asset.url, g14Asset.url, g30Asset.url, g31Asset.url, g12Asset.url],
-  },
-  {
     slug: "obra-rio",
     nome: "Obra Rio",
     capa: driveObraRio[0],
     fotos: driveObraRio,
   },
-  {
-    slug: "fazenda-da-grama",
-    nome: "Fazenda da Grama",
-    capa: g29Asset.url,
-    fotos: [g29Asset.url, g5Asset.url, g10Asset.url, g24Asset.url, g22Asset.url, g23Asset.url, g19Asset.url, g25Asset.url, g15Asset.url],
-  },
 ];
+
 
 function Portfolio() {
   const [obra, setObra] = useState<Obra | null>(null);
