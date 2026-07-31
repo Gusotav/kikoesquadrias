@@ -16,10 +16,16 @@ import g25Asset from "@/assets/1_51.jpg.asset.json";
 
 import {
   casa_na_arvore as driveCasaNaArvore,
-  edificio_ziad as driveEdificioZiad,
   escritorio_qnco as driveEscritorioQnco,
   obra_rio as driveObraRio,
 } from "@/assets/drive";
+import {
+  fazenda_da_grama as driveFazendaDaGrama,
+  haras_indaiatuba as driveHarasIndaiatuba,
+  marcelo_baracat as driveMarceloBaracat,
+  obra_enrique_junior as driveObraEnriqueJunior,
+  obra_haras as driveObraHaras,
+} from "@/assets/drive2";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -471,16 +477,40 @@ type Obra = {
 
 const OBRAS: Obra[] = [
   {
+    slug: "marcelo-baracat",
+    nome: "Marcelo Baracat",
+    capa: driveMarceloBaracat[0],
+    fotos: driveMarceloBaracat,
+  },
+  {
     slug: "casa-na-arvore",
     nome: "Casa na Árvore",
     capa: driveCasaNaArvore[0],
     fotos: driveCasaNaArvore,
   },
   {
-    slug: "edificio-ziad",
-    nome: "Edifício Ziad",
-    capa: driveEdificioZiad[0],
-    fotos: driveEdificioZiad,
+    slug: "haras-indaiatuba",
+    nome: "Haras Indaiatuba",
+    capa: driveHarasIndaiatuba[0],
+    fotos: driveHarasIndaiatuba,
+  },
+  {
+    slug: "obra-haras",
+    nome: "Obra Haras",
+    capa: driveObraHaras[0],
+    fotos: driveObraHaras,
+  },
+  {
+    slug: "fazenda-da-grama",
+    nome: "Fazenda da Grama",
+    capa: driveFazendaDaGrama[0],
+    fotos: driveFazendaDaGrama,
+  },
+  {
+    slug: "obra-enrique-junior",
+    nome: "Obra Enrique Júnior",
+    capa: driveObraEnriqueJunior[0],
+    fotos: driveObraEnriqueJunior,
   },
   {
     slug: "escritorio-qnco",
@@ -495,6 +525,7 @@ const OBRAS: Obra[] = [
     fotos: driveObraRio,
   },
 ];
+
 
 
 function Portfolio() {
@@ -542,9 +573,9 @@ function Portfolio() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-14">
+        <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-14">
           {OBRAS.map((o, i) => (
-            <Reveal key={o.slug} delay={(i % 3) * 90}>
+            <Reveal key={o.slug} delay={(i % 4) * 90}>
               <button
                 type="button"
                 onClick={() => openObra(o)}
