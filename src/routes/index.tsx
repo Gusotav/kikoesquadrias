@@ -533,7 +533,7 @@ const OBRAS: Obra[] = [
   {
     slug: "haras-indaiatuba",
     nome: "Haras Indaiatuba",
-    capa: driveHarasIndaiatuba[0],
+    capa: driveHarasIndaiatuba[6],
     fotos: driveHarasIndaiatuba,
   },
   {
@@ -551,7 +551,7 @@ const OBRAS: Obra[] = [
   {
     slug: "obra-enrique-junior",
     nome: "Obra Enrique Júnior",
-    capa: driveObraEnriqueJunior[0],
+    capa: driveObraEnriqueJunior[5],
     fotos: driveObraEnriqueJunior,
   },
   {
