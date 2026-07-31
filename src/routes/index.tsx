@@ -51,6 +51,27 @@ function useScrolled(threshold = 60) {
   return scrolled;
 }
 
+function useActiveSection(ids: string[], offset = 120) {
+  const [active, setActive] = useState<string>(ids[0] ?? "");
+  useEffect(() => {
+    const onScroll = () => {
+      const pos = window.scrollY + offset;
+      let current = ids[0] ?? "";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= pos) current = id;
+      }
+      // hero / top — none active
+      if (window.scrollY < offset) current = "";
+      setActive(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [ids, offset]);
+  return active;
+}
+
 /* ----------------------------- primitives ----------------------------- */
 
 function Reveal({
@@ -162,6 +183,7 @@ const NAV_LINKS = [
 function Navbar() {
   const scrolled = useScrolled(80);
   const [open, setOpen] = useState(false);
+  const active = useActiveSection(NAV_LINKS.map((l) => l.href.slice(1)));
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -189,17 +211,31 @@ function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">
-          {NAV_LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className={`text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
-                scrolled ? "text-graphite hover:text-primary" : "text-white/75 hover:text-white"
-              }`}
-            >
-              {l.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((l) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                className={`relative text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
+                  isActive
+                    ? scrolled
+                      ? "text-primary"
+                      : "text-white"
+                    : scrolled
+                      ? "text-graphite hover:text-primary"
+                      : "text-white/75 hover:text-white"
+                }`}
+              >
+                {l.label}
+                <span
+                  className={`absolute -bottom-1.5 left-0 h-px bg-accent transition-all duration-500 ${
+                    isActive ? "w-full opacity-100" : "w-0 opacity-0"
+                  }`}
+                />
+              </a>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:block">
@@ -241,12 +277,14 @@ function Navbar() {
       >
         <div className="container-kiko flex h-full flex-col justify-between pb-10 pt-24">
           <nav className="flex flex-col" aria-label="Menu móvel">
-            {NAV_LINKS.map((l, i) => (
+            {NAV_LINKS.map((l, i) => {
+              const isActive = active === l.href.slice(1);
+              return (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-border py-4 font-display text-lg font-medium tracking-tight transition-colors hover:text-graphite"
+                className={`relative border-b border-border py-4 font-display text-lg font-medium tracking-tight transition-colors hover:text-graphite ${isActive ? "text-primary" : ""}`}
                 style={{
                   transform: open ? "translateY(0)" : "translateY(16px)",
                   opacity: open ? 1 : 0,
@@ -255,8 +293,12 @@ function Navbar() {
               >
                 <span className="mr-3 text-[10px] font-normal text-graphite/50">0{i + 1}</span>
                 {l.label}
+                {isActive && (
+                  <span className="absolute right-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-accent" />
+                )}
               </a>
-            ))}
+              );
+            })}
           </nav>
           <div className="space-y-5">
             <Button href="#contato" variant="primary" onClick={() => setOpen(false)} className="w-full !py-4">
