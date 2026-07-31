@@ -471,16 +471,40 @@ type Obra = {
 
 const OBRAS: Obra[] = [
   {
+    slug: "marcelo-baracat",
+    nome: "Marcelo Baracat",
+    capa: driveMarceloBaracat[0],
+    fotos: driveMarceloBaracat,
+  },
+  {
     slug: "casa-na-arvore",
     nome: "Casa na Árvore",
     capa: driveCasaNaArvore[0],
     fotos: driveCasaNaArvore,
   },
   {
-    slug: "edificio-ziad",
-    nome: "Edifício Ziad",
-    capa: driveEdificioZiad[0],
-    fotos: driveEdificioZiad,
+    slug: "haras-indaiatuba",
+    nome: "Haras Indaiatuba",
+    capa: driveHarasIndaiatuba[0],
+    fotos: driveHarasIndaiatuba,
+  },
+  {
+    slug: "obra-haras",
+    nome: "Obra Haras",
+    capa: driveObraHaras[0],
+    fotos: driveObraHaras,
+  },
+  {
+    slug: "fazenda-da-grama",
+    nome: "Fazenda da Grama",
+    capa: driveFazendaDaGrama[0],
+    fotos: driveFazendaDaGrama,
+  },
+  {
+    slug: "obra-enrique-junior",
+    nome: "Obra Enrique Júnior",
+    capa: driveObraEnriqueJunior[0],
+    fotos: driveObraEnriqueJunior,
   },
   {
     slug: "escritorio-qnco",
@@ -495,6 +519,7 @@ const OBRAS: Obra[] = [
     fotos: driveObraRio,
   },
 ];
+
 
 
 function Portfolio() {
