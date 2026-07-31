@@ -293,8 +293,12 @@ function Navbar() {
               >
                 <span className="mr-3 text-[10px] font-normal text-graphite/50">0{i + 1}</span>
                 {l.label}
+                {isActive && (
+                  <span className="absolute right-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-accent" />
+                )}
               </a>
-            ))}
+              );
+            })}
           </nav>
           <div className="space-y-5">
             <Button href="#contato" variant="primary" onClick={() => setOpen(false)} className="w-full !py-4">
