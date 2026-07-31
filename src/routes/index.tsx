@@ -519,8 +519,20 @@ const OBRAS: Obra[] = [
   {
     slug: "casa-na-arvore",
     nome: "Casa na Árvore",
-    capa: g6Asset.url,
-    fotos: [g6Asset.url, g21Asset.url, g13Asset.url, g27Asset.url, g4Asset.url, g8Asset.url],
+    capa: driveCasaNaArvore[0],
+    fotos: driveCasaNaArvore,
+  },
+  {
+    slug: "edificio-ziad",
+    nome: "Edifício Ziad",
+    capa: driveEdificioZiad[0],
+    fotos: driveEdificioZiad,
+  },
+  {
+    slug: "escritorio-qnco",
+    nome: "Escritório QNCO",
+    capa: driveEscritorioQnco[0],
+    fotos: driveEscritorioQnco,
   },
   {
     slug: "haras-indaiatuba",
@@ -537,8 +549,8 @@ const OBRAS: Obra[] = [
   {
     slug: "obra-rio",
     nome: "Obra Rio",
-    capa: g11Asset.url,
-    fotos: [g11Asset.url, g7Asset.url, g9Asset.url, g26Asset.url],
+    capa: driveObraRio[0],
+    fotos: driveObraRio,
   },
   {
     slug: "fazenda-da-grama",
