@@ -50,6 +50,12 @@ import p10Asset from "@/assets/Parati_10.jpg.asset.json";
 import p11Asset from "@/assets/DSC04686.JPG.asset.json";
 import p12Asset from "@/assets/DSC04689.JPG.asset.json";
 import p13Asset from "@/assets/DSC04690.JPG.asset.json";
+import {
+  casa_na_arvore as driveCasaNaArvore,
+  edificio_ziad as driveEdificioZiad,
+  escritorio_qnco as driveEscritorioQnco,
+  obra_rio as driveObraRio,
+} from "@/assets/drive";
 
 export const Route = createFileRoute("/")({
   head: () => ({
