@@ -277,12 +277,14 @@ function Navbar() {
       >
         <div className="container-kiko flex h-full flex-col justify-between pb-10 pt-24">
           <nav className="flex flex-col" aria-label="Menu móvel">
-            {NAV_LINKS.map((l, i) => (
+            {NAV_LINKS.map((l, i) => {
+              const isActive = active === l.href.slice(1);
+              return (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-border py-4 font-display text-lg font-medium tracking-tight transition-colors hover:text-graphite"
+                className={`relative border-b border-border py-4 font-display text-lg font-medium tracking-tight transition-colors hover:text-graphite ${isActive ? "text-primary" : ""}`}
                 style={{
                   transform: open ? "translateY(0)" : "translateY(16px)",
                   opacity: open ? 1 : 0,
