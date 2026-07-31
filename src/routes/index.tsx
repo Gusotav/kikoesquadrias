@@ -14,16 +14,9 @@ import heroAsset from "@/assets/Hero.jpeg.asset.json";
 import g1Asset from "@/assets/1_54.jpg.asset.json";
 import g2Asset from "@/assets/1_60.jpg.asset.json";
 import g3Asset from "@/assets/1_25.jpg.asset.json";
-import g4Asset from "@/assets/1_11.jpg.asset.json";
 import g5Asset from "@/assets/1_3.jpg.asset.json";
-import g6Asset from "@/assets/1_1.jpg.asset.json";
-import g7Asset from "@/assets/1_2.jpg.asset.json";
-import g8Asset from "@/assets/1_4.jpg.asset.json";
-import g9Asset from "@/assets/1_5.jpg.asset.json";
 import g10Asset from "@/assets/1_6.jpg.asset.json";
-import g11Asset from "@/assets/1_7.jpg.asset.json";
 import g12Asset from "@/assets/1_8.jpg.asset.json";
-import g13Asset from "@/assets/1_9.jpg.asset.json";
 import g14Asset from "@/assets/1_48.jpg.asset.json";
 import g15Asset from "@/assets/1_55.jpg.asset.json";
 import g16Asset from "@/assets/1_56.jpg.asset.json";
@@ -31,13 +24,10 @@ import g17Asset from "@/assets/1_58.jpg.asset.json";
 import g18Asset from "@/assets/1_60-2.jpg.asset.json";
 import g19Asset from "@/assets/1_61.jpg.asset.json";
 import g20Asset from "@/assets/1_30.JPG.asset.json";
-import g21Asset from "@/assets/1_31.JPG.asset.json";
 import g22Asset from "@/assets/1_42.JPG.asset.json";
 import g23Asset from "@/assets/1_43.JPG.asset.json";
 import g24Asset from "@/assets/1_46.JPG.asset.json";
 import g25Asset from "@/assets/1_51.jpg.asset.json";
-import g26Asset from "@/assets/1_59.jpg.asset.json";
-import g27Asset from "@/assets/1_9-2.jpg.asset.json";
 import g29Asset from "@/assets/1_23.JPG.asset.json";
 import g30Asset from "@/assets/1_26.jpg.asset.json";
 import g31Asset from "@/assets/1_34.JPG.asset.json";
@@ -50,6 +40,12 @@ import p10Asset from "@/assets/Parati_10.jpg.asset.json";
 import p11Asset from "@/assets/DSC04686.JPG.asset.json";
 import p12Asset from "@/assets/DSC04689.JPG.asset.json";
 import p13Asset from "@/assets/DSC04690.JPG.asset.json";
+import {
+  casa_na_arvore as driveCasaNaArvore,
+  edificio_ziad as driveEdificioZiad,
+  escritorio_qnco as driveEscritorioQnco,
+  obra_rio as driveObraRio,
+} from "@/assets/drive";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -519,8 +515,20 @@ const OBRAS: Obra[] = [
   {
     slug: "casa-na-arvore",
     nome: "Casa na Árvore",
-    capa: g6Asset.url,
-    fotos: [g6Asset.url, g21Asset.url, g13Asset.url, g27Asset.url, g4Asset.url, g8Asset.url],
+    capa: driveCasaNaArvore[0],
+    fotos: driveCasaNaArvore,
+  },
+  {
+    slug: "edificio-ziad",
+    nome: "Edifício Ziad",
+    capa: driveEdificioZiad[0],
+    fotos: driveEdificioZiad,
+  },
+  {
+    slug: "escritorio-qnco",
+    nome: "Escritório QNCO",
+    capa: driveEscritorioQnco[0],
+    fotos: driveEscritorioQnco,
   },
   {
     slug: "haras-indaiatuba",
@@ -537,8 +545,8 @@ const OBRAS: Obra[] = [
   {
     slug: "obra-rio",
     nome: "Obra Rio",
-    capa: g11Asset.url,
-    fotos: [g11Asset.url, g7Asset.url, g9Asset.url, g26Asset.url],
+    capa: driveObraRio[0],
+    fotos: driveObraRio,
   },
   {
     slug: "fazenda-da-grama",
