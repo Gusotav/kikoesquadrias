@@ -573,9 +573,9 @@ function Portfolio() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-14">
+        <div className="mt-14 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-14">
           {OBRAS.map((o, i) => (
-            <Reveal key={o.slug} delay={(i % 3) * 90}>
+            <Reveal key={o.slug} delay={(i % 4) * 90}>
               <button
                 type="button"
                 onClick={() => openObra(o)}
