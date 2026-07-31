@@ -521,7 +521,7 @@ const OBRAS: Obra[] = [
   {
     slug: "marcelo-baracat",
     nome: "Marcelo Baracat",
-    capa: driveMarceloBaracat[0],
+    capa: driveMarceloBaracat[9],
     fotos: driveMarceloBaracat,
   },
   {
