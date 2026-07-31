@@ -308,7 +308,7 @@ function Hero() {
         </Reveal>
 
         <Reveal delay={120}>
-          <h1 className="mt-6 max-w-3xl font-display text-[1.75rem] font-medium leading-[1.15] tracking-[-0.02em] sm:text-4xl md:text-[2.75rem]">
+          <h1 className="mt-6 max-w-3xl font-display text-[2rem] font-medium leading-[1.15] tracking-[-0.02em] sm:text-5xl md:text-[3.25rem]">
             Kiko. Esquadrias que transformam projetos em arte.
           </h1>
         </Reveal>
