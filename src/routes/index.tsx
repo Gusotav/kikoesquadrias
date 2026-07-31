@@ -11,35 +11,9 @@ import {
 import logoAsset from "@/assets/LOGO.png.asset.json";
 import logoWhiteAsset from "@/assets/LOGO_BRANCA.png.asset.json";
 import heroAsset from "@/assets/Hero.jpeg.asset.json";
-import g1Asset from "@/assets/1_54.jpg.asset.json";
-import g2Asset from "@/assets/1_60.jpg.asset.json";
-import g3Asset from "@/assets/1_25.jpg.asset.json";
-import g5Asset from "@/assets/1_3.jpg.asset.json";
-import g10Asset from "@/assets/1_6.jpg.asset.json";
-import g12Asset from "@/assets/1_8.jpg.asset.json";
-import g14Asset from "@/assets/1_48.jpg.asset.json";
-import g15Asset from "@/assets/1_55.jpg.asset.json";
-import g16Asset from "@/assets/1_56.jpg.asset.json";
 import g17Asset from "@/assets/1_58.jpg.asset.json";
-import g18Asset from "@/assets/1_60-2.jpg.asset.json";
-import g19Asset from "@/assets/1_61.jpg.asset.json";
-import g20Asset from "@/assets/1_30.JPG.asset.json";
-import g22Asset from "@/assets/1_42.JPG.asset.json";
-import g23Asset from "@/assets/1_43.JPG.asset.json";
-import g24Asset from "@/assets/1_46.JPG.asset.json";
 import g25Asset from "@/assets/1_51.jpg.asset.json";
-import g29Asset from "@/assets/1_23.JPG.asset.json";
-import g30Asset from "@/assets/1_26.jpg.asset.json";
-import g31Asset from "@/assets/1_34.JPG.asset.json";
-import p1Asset from "@/assets/Parati_1.jpg.asset.json";
-import p3Asset from "@/assets/Parati_3.jpg.asset.json";
-import p7Asset from "@/assets/Parati_7.jpg.asset.json";
-import p8Asset from "@/assets/Parati_8.jpg.asset.json";
-import p9Asset from "@/assets/Parati_9.jpg.asset.json";
-import p10Asset from "@/assets/Parati_10.jpg.asset.json";
-import p11Asset from "@/assets/DSC04686.JPG.asset.json";
-import p12Asset from "@/assets/DSC04689.JPG.asset.json";
-import p13Asset from "@/assets/DSC04690.JPG.asset.json";
+
 import {
   casa_na_arvore as driveCasaNaArvore,
   edificio_ziad as driveEdificioZiad,
@@ -497,22 +471,6 @@ type Obra = {
 
 const OBRAS: Obra[] = [
   {
-    slug: "obra-em-parati",
-    nome: "Obra em Parati",
-    capa: p7Asset.url,
-    fotos: [
-      p7Asset.url,
-      p8Asset.url,
-      p10Asset.url,
-      p9Asset.url,
-      p3Asset.url,
-      p11Asset.url,
-      p13Asset.url,
-      p12Asset.url,
-      p1Asset.url,
-    ],
-  },
-  {
     slug: "casa-na-arvore",
     nome: "Casa na Árvore",
     capa: driveCasaNaArvore[0],
@@ -531,30 +489,13 @@ const OBRAS: Obra[] = [
     fotos: driveEscritorioQnco,
   },
   {
-    slug: "haras-indaiatuba",
-    nome: "Haras Indaiatuba",
-    capa: g1Asset.url,
-    fotos: [g1Asset.url, g2Asset.url, g18Asset.url, g20Asset.url, g16Asset.url, g17Asset.url],
-  },
-  {
-    slug: "haras-confins",
-    nome: "Obra Haras",
-    capa: g3Asset.url,
-    fotos: [g3Asset.url, g14Asset.url, g30Asset.url, g31Asset.url, g12Asset.url],
-  },
-  {
     slug: "obra-rio",
     nome: "Obra Rio",
     capa: driveObraRio[0],
     fotos: driveObraRio,
   },
-  {
-    slug: "fazenda-da-grama",
-    nome: "Fazenda da Grama",
-    capa: g29Asset.url,
-    fotos: [g29Asset.url, g5Asset.url, g10Asset.url, g24Asset.url, g22Asset.url, g23Asset.url, g19Asset.url, g25Asset.url, g15Asset.url],
-  },
 ];
+
 
 function Portfolio() {
   const [obra, setObra] = useState<Obra | null>(null);
