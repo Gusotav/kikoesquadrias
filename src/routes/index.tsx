@@ -664,7 +664,7 @@ function Portfolio() {
           role="dialog"
           aria-modal="true"
           aria-label={`Galeria da obra ${obra.nome}`}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[color:var(--kiko-blue-deep)]/97"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/97"
           onClick={close}
         >
           <div className="pointer-events-none absolute left-5 top-5 max-w-[60%] text-white md:left-8 md:top-7">
