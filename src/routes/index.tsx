@@ -289,7 +289,7 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="top" className="relative isolate min-h-[92svh] overflow-hidden bg-[color:var(--kiko-blue-deep)] text-white">
+    <section id="top" className="relative isolate h-[100svh] min-h-[100dvh] overflow-hidden bg-[color:var(--kiko-blue-deep)] text-white">
       <div className="absolute inset-0 -z-10">
         <img
           src={heroAsset.url}
