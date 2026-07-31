@@ -16,10 +16,16 @@ import g25Asset from "@/assets/1_51.jpg.asset.json";
 
 import {
   casa_na_arvore as driveCasaNaArvore,
-  edificio_ziad as driveEdificioZiad,
   escritorio_qnco as driveEscritorioQnco,
   obra_rio as driveObraRio,
 } from "@/assets/drive";
+import {
+  fazenda_da_grama as driveFazendaDaGrama,
+  haras_indaiatuba as driveHarasIndaiatuba,
+  marcelo_baracat as driveMarceloBaracat,
+  obra_enrique_junior as driveObraEnriqueJunior,
+  obra_haras as driveObraHaras,
+} from "@/assets/drive2";
 
 export const Route = createFileRoute("/")({
   head: () => ({
