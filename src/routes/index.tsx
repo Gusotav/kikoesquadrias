@@ -573,6 +573,11 @@ const OBRAS: Obra[] = [
 function Portfolio() {
   const [obra, setObra] = useState<Obra | null>(null);
   const [idx, setIdx] = useState(0);
+  const activeThumbRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    activeThumbRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [idx, obra]);
 
   const close = useCallback(() => setObra(null), []);
   const prev = useCallback(() => {
