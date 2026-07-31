@@ -627,7 +627,7 @@ function Portfolio() {
                     <h3 className="truncate font-display text-[15px] font-medium tracking-tight text-primary">
                       {o.nome}
                     </h3>
-                    <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-graphite">{o.local}</p>
+                    
                   </div>
                   <span className="shrink-0 text-[11px] tabular-nums text-graphite">{o.fotos.length}</span>
                 </div>
