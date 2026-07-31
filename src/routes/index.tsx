@@ -706,7 +706,7 @@ function Portfolio() {
             </svg>
           </button>
 
-          <figure className="pointer-events-none relative flex h-full w-full items-center justify-center px-4 py-24 md:px-24 md:py-20">
+          <figure className="pointer-events-none relative flex h-full w-full items-center justify-center px-4 pb-40 pt-20 md:px-24 md:pb-36 md:pt-24">
             <img
               key={obra.fotos[idx]}
               src={obra.fotos[idx]}
@@ -718,9 +718,32 @@ function Portfolio() {
             />
           </figure>
 
-          <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 text-[11px] tabular-nums tracking-[0.2em] text-white/70">
-            {String(idx + 1).padStart(2, "0")} / {String(obra.fotos.length).padStart(2, "0")}
+          <div
+            className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-black/60 px-4 pb-4 pt-3 backdrop-blur-sm md:px-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-2 text-center text-[11px] tabular-nums tracking-[0.2em] text-white/70">
+              {String(idx + 1).padStart(2, "0")} / {String(obra.fotos.length).padStart(2, "0")}
+            </div>
+            <div className="flex snap-x gap-2 overflow-x-auto pb-1 [scrollbar-color:rgba(255,255,255,0.3)_transparent] [scrollbar-width:thin]">
+              {obra.fotos.map((f, i) => (
+                <button
+                  key={f}
+                  type="button"
+                  ref={i === idx ? activeThumbRef : undefined}
+                  onClick={() => setIdx(i)}
+                  aria-label={`Ver foto ${i + 1}`}
+                  aria-current={i === idx}
+                  className={`relative h-14 w-20 shrink-0 snap-center overflow-hidden border transition md:h-16 md:w-24 ${
+                    i === idx ? "border-white opacity-100" : "border-white/20 opacity-55 hover:opacity-90"
+                  }`}
+                >
+                  <img src={f} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                </button>
+              ))}
+            </div>
           </div>
+
         </div>
       )}
     </section>
