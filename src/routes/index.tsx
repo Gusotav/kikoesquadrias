@@ -647,7 +647,7 @@ function Portfolio() {
         >
           <div className="pointer-events-none absolute left-5 top-5 max-w-[60%] text-white md:left-8 md:top-7">
             <div className="font-display text-sm font-medium tracking-tight">{obra.nome}</div>
-            <div className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/55">{obra.local}</div>
+            
           </div>
 
           <button
