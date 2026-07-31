@@ -183,6 +183,7 @@ const NAV_LINKS = [
 function Navbar() {
   const scrolled = useScrolled(80);
   const [open, setOpen] = useState(false);
+  const active = useActiveSection(NAV_LINKS.map((l) => l.href.slice(1)));
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -210,17 +211,31 @@ function Navbar() {
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">
-          {NAV_LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className={`text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
-                scrolled ? "text-graphite hover:text-primary" : "text-white/75 hover:text-white"
-              }`}
-            >
-              {l.label}
-            </a>
-          ))}
+          {NAV_LINKS.map((l) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                className={`relative text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
+                  isActive
+                    ? scrolled
+                      ? "text-primary"
+                      : "text-white"
+                    : scrolled
+                      ? "text-graphite hover:text-primary"
+                      : "text-white/75 hover:text-white"
+                }`}
+              >
+                {l.label}
+                <span
+                  className={`absolute -bottom-1.5 left-0 h-px bg-accent transition-all duration-500 ${
+                    isActive ? "w-full opacity-100" : "w-0 opacity-0"
+                  }`}
+                />
+              </a>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:block">
