@@ -41,6 +41,15 @@ import g27Asset from "@/assets/1_9-2.jpg.asset.json";
 import g29Asset from "@/assets/1_23.JPG.asset.json";
 import g30Asset from "@/assets/1_26.jpg.asset.json";
 import g31Asset from "@/assets/1_34.JPG.asset.json";
+import p1Asset from "@/assets/Parati_1.jpg.asset.json";
+import p3Asset from "@/assets/Parati_3.jpg.asset.json";
+import p7Asset from "@/assets/Parati_7.jpg.asset.json";
+import p8Asset from "@/assets/Parati_8.jpg.asset.json";
+import p9Asset from "@/assets/Parati_9.jpg.asset.json";
+import p10Asset from "@/assets/Parati_10.jpg.asset.json";
+import p11Asset from "@/assets/DSC04686.JPG.asset.json";
+import p12Asset from "@/assets/DSC04689.JPG.asset.json";
+import p13Asset from "@/assets/DSC04690.JPG.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -486,53 +495,56 @@ function Diferenciais() {
 type Obra = {
   slug: string;
   nome: string;
-  local: string;
   capa: string;
   fotos: string[];
 };
 
 const OBRAS: Obra[] = [
   {
-    slug: "marcelo-baracat",
-    nome: "Obra Marcelo Baracat",
-    local: "Brasília, DF",
-    capa: g24Asset.url,
-    fotos: [g24Asset.url, g22Asset.url, g23Asset.url, g19Asset.url, g25Asset.url, g15Asset.url],
+    slug: "obra-em-parati",
+    nome: "Obra em Parati",
+    capa: p7Asset.url,
+    fotos: [
+      p7Asset.url,
+      p8Asset.url,
+      p10Asset.url,
+      p9Asset.url,
+      p3Asset.url,
+      p11Asset.url,
+      p13Asset.url,
+      p12Asset.url,
+      p1Asset.url,
+    ],
   },
   {
     slug: "casa-na-arvore",
     nome: "Casa na Árvore",
-    local: "Monte Verde, MG",
     capa: g6Asset.url,
     fotos: [g6Asset.url, g21Asset.url, g13Asset.url, g27Asset.url, g4Asset.url, g8Asset.url],
   },
   {
     slug: "haras-indaiatuba",
     nome: "Haras Indaiatuba",
-    local: "Indaiatuba, SP",
     capa: g1Asset.url,
     fotos: [g1Asset.url, g2Asset.url, g18Asset.url, g20Asset.url, g16Asset.url, g17Asset.url],
   },
   {
     slug: "haras-confins",
     nome: "Obra Haras",
-    local: "Confins, MG",
     capa: g3Asset.url,
     fotos: [g3Asset.url, g14Asset.url, g30Asset.url, g31Asset.url, g12Asset.url],
   },
   {
     slug: "obra-rio",
     nome: "Obra Rio",
-    local: "Rio de Janeiro, RJ",
     capa: g11Asset.url,
     fotos: [g11Asset.url, g7Asset.url, g9Asset.url, g26Asset.url],
   },
   {
     slug: "fazenda-da-grama",
     nome: "Fazenda da Grama",
-    local: "Itupeva, SP",
     capa: g29Asset.url,
-    fotos: [g29Asset.url, g5Asset.url, g10Asset.url],
+    fotos: [g29Asset.url, g5Asset.url, g10Asset.url, g24Asset.url, g22Asset.url, g23Asset.url, g19Asset.url, g25Asset.url, g15Asset.url],
   },
 ];
 
@@ -615,7 +627,7 @@ function Portfolio() {
                     <h3 className="truncate font-display text-[15px] font-medium tracking-tight text-primary">
                       {o.nome}
                     </h3>
-                    <p className="mt-1 text-[11px] uppercase tracking-[0.18em] text-graphite">{o.local}</p>
+                    
                   </div>
                   <span className="shrink-0 text-[11px] tabular-nums text-graphite">{o.fotos.length}</span>
                 </div>
@@ -635,7 +647,7 @@ function Portfolio() {
         >
           <div className="pointer-events-none absolute left-5 top-5 max-w-[60%] text-white md:left-8 md:top-7">
             <div className="font-display text-sm font-medium tracking-tight">{obra.nome}</div>
-            <div className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/55">{obra.local}</div>
+            
           </div>
 
           <button
