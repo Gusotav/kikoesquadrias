@@ -77,19 +77,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Kiko Esquadrias — Esquadrias artesanais em alumínio de alto padrão" },
+      { title: "Kiko Esquadrias — Esquadrias em alumínio de alto padrão desde 1991" },
       {
         name: "description",
         content:
-          "Há mais de 35 anos, a Kiko Esquadrias entrega soluções artesanais em alumínio para obras residenciais de alto padrão. Exclusividade, precisão técnica e conforto absoluto.",
+          "Desde 1991, a Kiko Esquadrias entrega soluções em alumínio para obras de alto padrão: design, engenharia, precisão e excelência em cada projeto.",
       },
       { name: "author", content: "Kiko Esquadrias" },
       { property: "og:title", content: "Kiko Esquadrias — Esquadrias que transformam projetos em arte" },
       {
         property: "og:description",
         content:
-          "Soluções artesanais em alumínio para arquitetos, engenheiros e proprietários que exigem alto padrão.",
+          "Desde 1991, soluções em alumínio sob medida para arquitetos, engenheiros e proprietários de obras de alto padrão.",
       },
+
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#2C345B" },
