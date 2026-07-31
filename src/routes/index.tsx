@@ -302,7 +302,7 @@ function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[color:var(--kiko-blue-deep)]/75 to-transparent" />
       </div>
 
-      <div className="container-kiko relative flex min-h-[92svh] flex-col justify-end pb-14 pt-32 md:pb-20">
+      <div className="container-kiko relative flex h-full flex-col justify-end pb-14 pt-32 md:pb-20">
         <Reveal>
           <Eyebrow tone="light">Esquadrias em alumínio · Desde 1991</Eyebrow>
         </Reveal>
