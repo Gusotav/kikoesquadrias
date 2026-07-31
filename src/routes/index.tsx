@@ -205,9 +205,9 @@ function Navbar() {
           <img
             src={scrolled ? logoAsset.url : logoWhiteAsset.url}
             alt="Kiko Esquadrias"
-            width={130}
-            height={36}
-            className="h-7 w-auto transition-opacity duration-300 md:h-8"
+            width={168}
+            height={46}
+            className="h-9 w-auto transition-opacity duration-300 md:h-12"
             style={{ filter: scrolled ? "none" : "brightness(0) invert(1)" }}
           />
         </a>
