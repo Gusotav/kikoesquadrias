@@ -21,9 +21,9 @@ import {
 } from "@/assets/drive";
 import { fazenda_da_grama as driveFazendaDaGrama } from "@/assets/drive2";
 import { fazenda_da_grama_extra as driveFazendaDaGramaExtra } from "@/assets/drive4";
+import { marcelo_baracat as driveMarceloBaracat } from "@/assets/drive5";
 import {
   haras_indaiatuba as driveHarasIndaiatuba,
-  marcelo_baracat as driveMarceloBaracat,
   obra_enrique_junior as driveObraEnriqueJunior,
   obra_haras as driveObraHaras,
 } from "@/assets/drive3";
