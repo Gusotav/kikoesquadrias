@@ -534,7 +534,7 @@ const OBRAS: Obra[] = [
     slug: "haras-indaiatuba",
     nome: "Haras Indaiatuba",
     capa: driveHarasIndaiatuba[6],
-    fotos: driveHarasIndaiatuba,
+    fotos: driveHarasIndaiatuba.filter((_, i) => i !== 2),
   },
   {
     slug: "obra-haras",
