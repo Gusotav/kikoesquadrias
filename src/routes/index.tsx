@@ -547,7 +547,9 @@ const OBRAS: Obra[] = [
     slug: "fazenda-da-grama",
     nome: "Fazenda da Grama",
     capa: driveFazendaDaGrama[0],
-    fotos: [...driveFazendaDaGrama, ...driveFazendaDaGramaExtra],
+    fotos: [...driveFazendaDaGrama, ...driveFazendaDaGramaExtra].filter(
+      (_, i) => i < 5 || i > 10,
+    ),
   },
   {
     slug: "obra-enrique-junior",
