@@ -522,7 +522,7 @@ const OBRAS: Obra[] = [
   {
     slug: "marcelo-baracat",
     nome: "Marcelo Baracat",
-    capa: driveMarceloBaracat.filter((_, i) => i !== 2)[9],
+    capa: driveMarceloBaracat.filter((_, i) => i !== 2)[8],
     fotos: driveMarceloBaracat.filter((_, i) => i !== 2),
   },
   {
