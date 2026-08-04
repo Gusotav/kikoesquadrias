@@ -20,6 +20,7 @@ import {
   obra_rio as driveObraRio,
 } from "@/assets/drive";
 import { fazenda_da_grama as driveFazendaDaGrama } from "@/assets/drive2";
+import { fazenda_da_grama_extra as driveFazendaDaGramaExtra } from "@/assets/drive4";
 import {
   haras_indaiatuba as driveHarasIndaiatuba,
   marcelo_baracat as driveMarceloBaracat,
@@ -546,7 +547,7 @@ const OBRAS: Obra[] = [
     slug: "fazenda-da-grama",
     nome: "Fazenda da Grama",
     capa: driveFazendaDaGrama[0],
-    fotos: driveFazendaDaGrama,
+    fotos: [...driveFazendaDaGrama, ...driveFazendaDaGramaExtra],
   },
   {
     slug: "obra-enrique-junior",
