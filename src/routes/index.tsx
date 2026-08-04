@@ -547,7 +547,7 @@ const OBRAS: Obra[] = [
     slug: "fazenda-da-grama",
     nome: "Fazenda da Grama",
     capa: driveFazendaDaGrama[0],
-    fotos: driveFazendaDaGrama,
+    fotos: [...driveFazendaDaGrama, ...driveFazendaDaGramaExtra],
   },
   {
     slug: "obra-enrique-junior",
