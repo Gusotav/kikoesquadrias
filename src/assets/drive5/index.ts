@@ -1,0 +1,23 @@
+import mb_1 from "./mb_1.jpg.asset.json";
+import mb_2 from "./mb_2.jpg.asset.json";
+import mb_3 from "./mb_3.jpg.asset.json";
+import mb_4 from "./mb_4.jpg.asset.json";
+import mb_5 from "./mb_5.jpg.asset.json";
+import mb_6 from "./mb_6.jpg.asset.json";
+import mb_7 from "./mb_7.jpg.asset.json";
+import mb_8 from "./mb_8.jpg.asset.json";
+import mb_9 from "./mb_9.jpg.asset.json";
+import mb_10 from "./mb_10.jpg.asset.json";
+import mb_11 from "./mb_11.jpg.asset.json";
+import mb_12 from "./mb_12.jpg.asset.json";
+import mb_13 from "./mb_13.jpg.asset.json";
+import mb_14 from "./mb_14.jpg.asset.json";
+import mb_15 from "./mb_15.jpg.asset.json";
+import mb_16 from "./mb_16.jpg.asset.json";
+import mb_17 from "./mb_17.jpg.asset.json";
+import mb_18 from "./mb_18.jpg.asset.json";
+import mb_19 from "./mb_19.jpg.asset.json";
+import mb_20 from "./mb_20.jpg.asset.json";
+import mb_21 from "./mb_21.jpg.asset.json";
+
+export const marcelo_baracat = [mb_1.url, mb_2.url, mb_3.url, mb_4.url, mb_5.url, mb_6.url, mb_7.url, mb_8.url, mb_9.url, mb_10.url, mb_11.url, mb_12.url, mb_13.url, mb_14.url, mb_15.url, mb_16.url, mb_17.url, mb_18.url, mb_19.url, mb_20.url, mb_21.url];
