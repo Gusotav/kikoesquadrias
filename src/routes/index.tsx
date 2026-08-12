@@ -316,9 +316,44 @@ function Navbar() {
 /* ----------------------------- Hero ----------------------------- */
 
 function Hero() {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const el = sectionRef.current;
+      if (!el) return;
+      const { left, top, width, height } = el.getBoundingClientRect();
+      const x = (e.clientX - left - width / 2) / (width / 2);
+      const y = (e.clientY - top - height / 2) / (height / 2);
+      setTilt({ x: x * 0.8, y: y * -0.8 });
+    };
+
+    const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
+
+    const el = sectionRef.current;
+    if (!el) return;
+    el.addEventListener("mousemove", handleMouseMove);
+    el.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      el.removeEventListener("mousemove", handleMouseMove);
+      el.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
   return (
-    <section id="top" className="relative isolate h-[100svh] min-h-[100dvh] overflow-hidden bg-[color:var(--kiko-blue-deep)] text-white">
-      <div className="absolute inset-0 -z-10">
+    <section
+      id="top"
+      ref={sectionRef}
+      className="relative isolate h-[100svh] min-h-[100dvh] overflow-hidden bg-[color:var(--kiko-blue-deep)] text-white"
+    >
+      <div
+        className="absolute inset-0 -z-10 transition-transform duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{
+          transform: `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) scale(1.08)`,
+          transformOrigin: "center center",
+        }}
+      >
         <img
           src={heroAsset.url}
           alt="Residência de alto padrão com esquadrias de alumínio Kiko"
@@ -494,12 +529,20 @@ function Diferenciais() {
         <div className="mt-16 grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
           {DIFERENCIAIS.map((d, i) => (
             <Reveal key={d.title} delay={i * 90} className="h-full">
-              <article className="flex h-full flex-col bg-surface p-7 md:p-8">
-                <div className="h-7 w-7 text-primary/70">{d.icon}</div>
-                <h3 className="mt-8 font-display text-[15px] font-medium leading-snug text-primary">
+              <article className="group relative flex h-full flex-col bg-surface p-7 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-primary hover:text-white md:p-8">
+                <div className="h-7 w-7 text-primary/70 transition-colors duration-500 group-hover:text-white/90">
+                  {d.icon}
+                </div>
+                <h3 className="mt-8 font-display text-[15px] font-medium leading-snug text-primary transition-colors duration-500 group-hover:text-white">
                   {d.title}
                 </h3>
-                <p className="mt-3 text-[13px] leading-relaxed text-graphite">{d.body}</p>
+                <p className="mt-3 text-[13px] leading-relaxed text-graphite transition-colors duration-500 group-hover:text-white/70">
+                  {d.body}
+                </p>
+                <span
+                  aria-hidden
+                  className="absolute right-4 top-4 h-1.5 w-1.5 rounded-full bg-primary/30 opacity-0 transition-all duration-500 group-hover:scale-[5] group-hover:opacity-100 group-hover:bg-white/20"
+                />
               </article>
             </Reveal>
           ))}
@@ -995,7 +1038,14 @@ function Footer() {
             <div className="text-[10px] uppercase tracking-[0.22em] text-white/35">Contato</div>
             <ul className="mt-4 space-y-2 text-[13px]">
               <li>
-                <a href="mailto:Kikoesquadrias@kikoesquadrias.com.br" className="transition-colors hover:text-white">
+                <a
+                  href="mailto:Kikoesquadrias@kikoesquadrias.com.br"
+                  className="inline-flex items-center gap-2.5 transition-colors hover:text-white"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                    <path d="M2 7l8.5 6.5a3 3 0 0 0 3 0L22 7" />
+                  </svg>
                   Kikoesquadrias@kikoesquadrias.com.br
                 </a>
               </li>
@@ -1004,8 +1054,13 @@ function Footer() {
                   href="https://instagram.com/kiko.esquadriasoficial"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-white"
+                  className="inline-flex items-center gap-2.5 transition-colors hover:text-white"
                 >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none" />
+                  </svg>
                   @kiko.esquadriasoficial
                 </a>
               </li>
