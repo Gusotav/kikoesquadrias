@@ -995,8 +995,8 @@ function Footer() {
             <div className="text-[10px] uppercase tracking-[0.22em] text-white/35">Contato</div>
             <ul className="mt-4 space-y-2 text-[13px]">
               <li>
-                <a href="mailto:esquadrias@kikoesquadrias.com.br" className="transition-colors hover:text-white">
-                  esquadrias@kikoesquadrias.com.br
+                <a href="mailto:Kikoesquadrias@kikoesquadrias.com.br" className="transition-colors hover:text-white">
+                  Kikoesquadrias@kikoesquadrias.com.br
                 </a>
               </li>
               <li>
