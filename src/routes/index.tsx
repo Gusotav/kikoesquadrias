@@ -1038,7 +1038,14 @@ function Footer() {
             <div className="text-[10px] uppercase tracking-[0.22em] text-white/35">Contato</div>
             <ul className="mt-4 space-y-2 text-[13px]">
               <li>
-                <a href="mailto:Kikoesquadrias@kikoesquadrias.com.br" className="transition-colors hover:text-white">
+                <a
+                  href="mailto:Kikoesquadrias@kikoesquadrias.com.br"
+                  className="inline-flex items-center gap-2.5 transition-colors hover:text-white"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                    <path d="M2 7l8.5 6.5a3 3 0 0 0 3 0L22 7" />
+                  </svg>
                   Kikoesquadrias@kikoesquadrias.com.br
                 </a>
               </li>
@@ -1047,8 +1054,13 @@ function Footer() {
                   href="https://instagram.com/kiko.esquadriasoficial"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-colors hover:text-white"
+                  className="inline-flex items-center gap-2.5 transition-colors hover:text-white"
                 >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none" />
+                  </svg>
                   @kiko.esquadriasoficial
                 </a>
               </li>
