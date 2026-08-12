@@ -529,12 +529,20 @@ function Diferenciais() {
         <div className="mt-16 grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
           {DIFERENCIAIS.map((d, i) => (
             <Reveal key={d.title} delay={i * 90} className="h-full">
-              <article className="flex h-full flex-col bg-surface p-7 md:p-8">
-                <div className="h-7 w-7 text-primary/70">{d.icon}</div>
-                <h3 className="mt-8 font-display text-[15px] font-medium leading-snug text-primary">
+              <article className="group relative flex h-full flex-col bg-surface p-7 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-primary hover:text-white md:p-8">
+                <div className="h-7 w-7 text-primary/70 transition-colors duration-500 group-hover:text-white/90">
+                  {d.icon}
+                </div>
+                <h3 className="mt-8 font-display text-[15px] font-medium leading-snug text-primary transition-colors duration-500 group-hover:text-white">
                   {d.title}
                 </h3>
-                <p className="mt-3 text-[13px] leading-relaxed text-graphite">{d.body}</p>
+                <p className="mt-3 text-[13px] leading-relaxed text-graphite transition-colors duration-500 group-hover:text-white/70">
+                  {d.body}
+                </p>
+                <span
+                  aria-hidden
+                  className="absolute right-4 top-4 h-1.5 w-1.5 rounded-full bg-primary/30 opacity-0 transition-all duration-500 group-hover:scale-[5] group-hover:opacity-100 group-hover:bg-white/20"
+                />
               </article>
             </Reveal>
           ))}
