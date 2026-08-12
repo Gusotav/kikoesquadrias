@@ -316,9 +316,44 @@ function Navbar() {
 /* ----------------------------- Hero ----------------------------- */
 
 function Hero() {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const el = sectionRef.current;
+      if (!el) return;
+      const { left, top, width, height } = el.getBoundingClientRect();
+      const x = (e.clientX - left - width / 2) / (width / 2);
+      const y = (e.clientY - top - height / 2) / (height / 2);
+      setTilt({ x: x * 0.8, y: y * -0.8 });
+    };
+
+    const handleMouseLeave = () => setTilt({ x: 0, y: 0 });
+
+    const el = sectionRef.current;
+    if (!el) return;
+    el.addEventListener("mousemove", handleMouseMove);
+    el.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      el.removeEventListener("mousemove", handleMouseMove);
+      el.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
   return (
-    <section id="top" className="relative isolate h-[100svh] min-h-[100dvh] overflow-hidden bg-[color:var(--kiko-blue-deep)] text-white">
-      <div className="absolute inset-0 -z-10">
+    <section
+      id="top"
+      ref={sectionRef}
+      className="relative isolate h-[100svh] min-h-[100dvh] overflow-hidden bg-[color:var(--kiko-blue-deep)] text-white"
+    >
+      <div
+        className="absolute inset-0 -z-10 transition-transform duration-[2000ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{
+          transform: `perspective(1200px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) scale(1.08)`,
+          transformOrigin: "center center",
+        }}
+      >
         <img
           src={heroAsset.url}
           alt="Residência de alto padrão com esquadrias de alumínio Kiko"
