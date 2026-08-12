@@ -563,8 +563,8 @@ type Obra = {
 
 const OBRAS: Obra[] = [
   {
-    slug: "marcelo-baracat",
-    nome: "Marcelo Baracat",
+    slug: "obra-brasilia",
+    nome: "Obra Brasília",
     capa: driveMarceloBaracat[1],
     fotos: driveMarceloBaracat,
   },
@@ -575,14 +575,14 @@ const OBRAS: Obra[] = [
     fotos: driveCasaNaArvore,
   },
   {
-    slug: "haras-indaiatuba",
-    nome: "Haras Indaiatuba",
+    slug: "obra-indaiatuba",
+    nome: "Obra Indaiatuba",
     capa: driveHarasIndaiatuba[6],
     fotos: driveHarasIndaiatuba.filter((_, i) => i !== 2),
   },
   {
-    slug: "obra-haras",
-    nome: "Obra Haras",
+    slug: "obra-belo-horizonte",
+    nome: "Obra Belo Horizonte",
     capa: driveObraHaras[0],
     fotos: driveObraHaras,
   },
@@ -595,14 +595,14 @@ const OBRAS: Obra[] = [
     ),
   },
   {
-    slug: "obra-enrique-junior",
-    nome: "Obra Enrique Júnior",
+    slug: "obra-aruja",
+    nome: "Obra Arujá",
     capa: driveObraEnriqueJunior[5],
     fotos: driveObraEnriqueJunior,
   },
   {
-    slug: "escritorio-qnco",
-    nome: "Escritório QNCO",
+    slug: "obra-corporativa",
+    nome: "Obra Corporativa",
     capa: driveEscritorioQnco[0],
     fotos: driveEscritorioQnco,
   },
