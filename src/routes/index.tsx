@@ -422,12 +422,15 @@ function Hero() {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
               href="#contato"
+              onClick={anchorClick("#contato")}
               className="inline-flex items-center justify-center gap-2 bg-white px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.16em] text-primary transition-colors hover:bg-white/90"
             >
               Solicitar Orçamento
             </a>
             <a
               href="#portfolio"
+              onClick={anchorClick("#portfolio")}
+
               className="inline-flex items-center justify-center gap-2 border border-white/30 px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.16em] text-white transition-colors hover:border-white"
             >
               Ver Portfólio
