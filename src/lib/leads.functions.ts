@@ -33,5 +33,5 @@ export const submitLead = createServerFn({ method: "POST" })
     const { deliverLead } = await import("./ghl.server");
     const delivered = await deliverLead(row);
 
-    return { ok: true, delivered };
+    return { ok: true, delivered, id: row.id as string };
   });

@@ -10,6 +10,7 @@ import {
 } from "react";
 import { toast } from "sonner";
 
+import { trackLeadConversion } from "@/lib/googleAds";
 import { submitLead } from "@/lib/leads.functions";
 import { getUtmData, leadSchema, maskPhoneBR } from "@/lib/lead-utils";
 
@@ -910,7 +911,14 @@ function Contato() {
     setErrors({});
     setIsSubmitting(true);
     try {
-      await send({ data: parsed.data });
+      const result = await send({ data: parsed.data });
+      trackLeadConversion({
+        transactionId: result.id,
+        nome: parsed.data.nome,
+        telefone: parsed.data.telefone,
+        value: 1,
+        currency: "BRL",
+      });
       setNome("");
       setTelefone("");
       toast.success("Recebemos seu contato. Nossa equipe retornará em breve.");
