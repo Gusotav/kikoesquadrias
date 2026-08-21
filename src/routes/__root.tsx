@@ -142,9 +142,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ClientOnly fallback={null}>
+        <MetaPixelProvider />
+      </ClientOnly>
       <Outlet />
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }
+
 
