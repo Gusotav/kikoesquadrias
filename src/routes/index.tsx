@@ -6,11 +6,15 @@ import {
   useRef,
   useState,
   type FormEvent,
+  type MouseEvent as ReactMouseEvent,
   type ReactNode,
 } from "react";
+
 import { toast } from "sonner";
 
+import { setAdvancedMatching, trackWebEvent } from "@/lib/fbpixel";
 import { trackLeadConversion } from "@/lib/googleAds";
+
 import { submitLead } from "@/lib/leads.functions";
 import { getUtmData, leadSchema, maskPhoneBR } from "@/lib/lead-utils";
 
@@ -46,7 +50,26 @@ export const Route = createFileRoute("/")({
   component: KikoLanding,
 });
 
+/* ----------------------------- âncoras ----------------------------- */
+
+/** Scroll suave para uma seção sem alterar a URL (evita PageView falso). */
+function scrollToSection(id: string) {
+  if (typeof document === "undefined") return;
+  const target = id === "top" ? document.body : document.getElementById(id);
+  target?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function anchorClick(href: string, after?: () => void) {
+  return (e: ReactMouseEvent) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    scrollToSection(href.slice(1));
+    after?.();
+  };
+}
+
 /* ----------------------------- hooks ----------------------------- */
+
 
 function useScrolled(threshold = 60) {
   const [scrolled, setScrolled] = useState(false);
@@ -168,7 +191,13 @@ function Button({
 
   if (href) {
     return (
-      <a href={href} aria-label={ariaLabel} className={`${base} ${styles} ${className}`}>
+      <a
+        href={href}
+        onClick={anchorClick(href, onClick)}
+        aria-label={ariaLabel}
+        className={`${base} ${styles} ${className}`}
+      >
+
         {content}
       </a>
     );
@@ -209,7 +238,13 @@ function Navbar() {
       }`}
     >
       <div className="container-kiko flex h-16 items-center justify-between md:h-[72px]">
-        <a href="#top" className="flex items-center" aria-label="Kiko Esquadrias — Início">
+        <a
+          href="#top"
+          onClick={anchorClick("#top")}
+          className="flex items-center"
+          aria-label="Kiko Esquadrias — Início"
+        >
+
           <img
             src={scrolled ? logoAsset.url : logoWhiteAsset.url}
             alt="Kiko Esquadrias"
@@ -227,6 +262,8 @@ function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
+                onClick={anchorClick(l.href)}
+
                 className={`relative text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
                   isActive
                     ? scrolled
@@ -251,6 +288,8 @@ function Navbar() {
         <div className="hidden lg:block">
           <a
             href="#contato"
+            onClick={anchorClick("#contato")}
+
             className={`inline-flex items-center border px-5 py-2.5 text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 ${
               scrolled
                 ? "border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground"
@@ -293,7 +332,8 @@ function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={anchorClick(l.href, () => setOpen(false))}
+
                 className={`relative border-b border-border py-4 font-display text-lg font-medium tracking-tight transition-colors hover:text-graphite ${isActive ? "text-primary" : ""}`}
                 style={{
                   transform: open ? "translateY(0)" : "translateY(16px)",
@@ -395,12 +435,15 @@ function Hero() {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a
               href="#contato"
+              onClick={anchorClick("#contato")}
               className="inline-flex items-center justify-center gap-2 bg-white px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.16em] text-primary transition-colors hover:bg-white/90"
             >
               Solicitar Orçamento
             </a>
             <a
               href="#portfolio"
+              onClick={anchorClick("#portfolio")}
+
               className="inline-flex items-center justify-center gap-2 border border-white/30 px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.16em] text-white transition-colors hover:border-white"
             >
               Ver Portfólio
@@ -919,6 +962,12 @@ function Contato() {
         value: 1,
         currency: "BRL",
       });
+      setAdvancedMatching({ nome: parsed.data.nome, telefone: parsed.data.telefone });
+      trackWebEvent("Lead", {
+        content_name: "form_contato",
+        content_category: "lead_form",
+      });
+
       setNome("");
       setTelefone("");
       toast.success("Recebemos seu contato. Nossa equipe retornará em breve.");
@@ -1111,7 +1160,7 @@ function Footer() {
             <ul className="mt-4 space-y-2 text-[13px]">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="transition-colors hover:text-white">{l.label}</a>
+                  <a href={l.href} onClick={anchorClick(l.href)} className="transition-colors hover:text-white">{l.label}</a>
                 </li>
               ))}
             </ul>
