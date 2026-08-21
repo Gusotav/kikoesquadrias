@@ -322,7 +322,6 @@ function Navbar() {
                 href={l.href}
                 onClick={anchorClick(l.href, () => setOpen(false))}
 
-                onClick={() => setOpen(false)}
                 className={`relative border-b border-border py-4 font-display text-lg font-medium tracking-tight transition-colors hover:text-graphite ${isActive ? "text-primary" : ""}`}
                 style={{
                   transform: open ? "translateY(0)" : "translateY(16px)",
