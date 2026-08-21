@@ -962,6 +962,12 @@ function Contato() {
         value: 1,
         currency: "BRL",
       });
+      setAdvancedMatching({ nome: parsed.data.nome, telefone: parsed.data.telefone });
+      trackWebEvent("Lead", {
+        content_name: "form_contato",
+        content_category: "lead_form",
+      });
+
       setNome("");
       setTelefone("");
       toast.success("Recebemos seu contato. Nossa equipe retornará em breve.");
