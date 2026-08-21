@@ -189,7 +189,13 @@ function Button({
 
   if (href) {
     return (
-      <a href={href} aria-label={ariaLabel} className={`${base} ${styles} ${className}`}>
+      <a
+        href={href}
+        onClick={anchorClick(href, onClick)}
+        aria-label={ariaLabel}
+        className={`${base} ${styles} ${className}`}
+      >
+
         {content}
       </a>
     );
