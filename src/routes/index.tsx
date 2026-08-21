@@ -236,7 +236,13 @@ function Navbar() {
       }`}
     >
       <div className="container-kiko flex h-16 items-center justify-between md:h-[72px]">
-        <a href="#top" className="flex items-center" aria-label="Kiko Esquadrias — Início">
+        <a
+          href="#top"
+          onClick={anchorClick("#top")}
+          className="flex items-center"
+          aria-label="Kiko Esquadrias — Início"
+        >
+
           <img
             src={scrolled ? logoAsset.url : logoWhiteAsset.url}
             alt="Kiko Esquadrias"
