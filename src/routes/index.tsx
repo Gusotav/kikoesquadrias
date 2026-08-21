@@ -10,6 +10,7 @@ import {
 } from "react";
 import { toast } from "sonner";
 
+import { trackLeadConversion } from "@/lib/googleAds";
 import { submitLead } from "@/lib/leads.functions";
 import { getUtmData, leadSchema, maskPhoneBR } from "@/lib/lead-utils";
 
