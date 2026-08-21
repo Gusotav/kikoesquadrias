@@ -6,8 +6,10 @@ import {
   useRef,
   useState,
   type FormEvent,
+  type MouseEvent as ReactMouseEvent,
   type ReactNode,
 } from "react";
+
 import { toast } from "sonner";
 
 import { trackLeadConversion } from "@/lib/googleAds";
