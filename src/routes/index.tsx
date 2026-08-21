@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import {
   useCallback,
   useEffect,
@@ -7,12 +8,17 @@ import {
   type FormEvent,
   type ReactNode,
 } from "react";
+import { toast } from "sonner";
+
+import { submitLead } from "@/lib/leads.functions";
+import { getUtmData, leadSchema, maskPhoneBR } from "@/lib/lead-utils";
 
 import logoAsset from "@/assets/LOGO.png.asset.json";
 import logoWhiteAsset from "@/assets/LOGO_BRANCA.png.asset.json";
 import heroAsset from "@/assets/Hero.jpeg.asset.json";
 import g17Asset from "@/assets/1_58.jpg.asset.json";
 import g25Asset from "@/assets/1_51.jpg.asset.json";
+
 
 import {
   casa_na_arvore as driveCasaNaArvore,
@@ -131,6 +137,7 @@ function Button({
   type = "button",
   className = "",
   ariaLabel,
+  disabled = false,
 }: {
   children: ReactNode;
   variant?: "primary" | "ghost" | "outline";
@@ -139,6 +146,7 @@ function Button({
   type?: "button" | "submit";
   className?: string;
   ariaLabel?: string;
+  disabled?: boolean;
 }) {
   const base =
     "group inline-flex items-center justify-center gap-2 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 rounded-none";
@@ -165,7 +173,7 @@ function Button({
     );
   }
   return (
-    <button type={type} onClick={onClick} aria-label={ariaLabel} className={`${base} ${styles} ${className}`}>
+    <button type={type} onClick={onClick} disabled={disabled} aria-label={ariaLabel} className={`${base} ${styles} ${className}`}>
       {content}
     </button>
   );
@@ -864,11 +872,57 @@ function Qualidade() {
 function Contato() {
   const [sent, setSent] = useState(false);
   const [perfil, setPerfil] = useState<"proprietario" | "arquiteto">("proprietario");
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [errors, setErrors] = useState<{ nome?: string; telefone?: string }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const send = useServerFn(submitLead);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
+    if (isSubmitting) return;
+
+    const perfilLabel = perfil === "proprietario" ? "Proprietário da Obra" : "Arquiteto / Engenheiro";
+    const utm = getUtmData();
+    const parsed = leadSchema.safeParse({
+      nome,
+      telefone,
+      perfil: perfilLabel,
+      utm_source: utm.utm_source,
+      utm_medium: utm.utm_medium,
+      utm_campaign: utm.utm_campaign,
+      utm_content: utm.utm_content,
+      utm_term: utm.utm_term,
+      page_referrer: utm.page_referrer,
+      url_conversao: utm.url_conversao,
+    });
+
+    if (!parsed.success) {
+      const fieldErrors: { nome?: string; telefone?: string } = {};
+      for (const issue of parsed.error.issues) {
+        const key = issue.path[0];
+        if (key === "nome" || key === "telefone") fieldErrors[key] = issue.message;
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+
+    setErrors({});
+    setIsSubmitting(true);
+    try {
+      await send({ data: parsed.data });
+      setNome("");
+      setTelefone("");
+      toast.success("Recebemos seu contato. Nossa equipe retornará em breve.");
+      setSent(true);
+    } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
+      toast.error("Ops! Algo deu errado. Tente novamente em instantes.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
 
   return (
     <section id="contato" className="bg-background py-24 md:py-36">
@@ -935,10 +989,17 @@ function Contato() {
                         id="nome"
                         name="nome"
                         required
+                        maxLength={120}
                         autoComplete="name"
-                        className="mt-2 w-full border-b border-border bg-transparent py-2.5 text-[15px] text-primary placeholder:text-graphite/50 focus:border-primary focus:outline-none"
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                        aria-invalid={!!errors.nome}
+                        className="mt-2 w-full border-b border-border bg-transparent py-2.5 text-[15px] text-primary placeholder:text-graphite/50 focus:border-primary focus:outline-none aria-[invalid=true]:border-destructive"
                         placeholder="Seu nome"
                       />
+                      {errors.nome ? (
+                        <p className="mt-2 text-[11px] text-destructive">{errors.nome}</p>
+                      ) : null}
                     </div>
                     <div>
                       <label htmlFor="whatsapp" className="text-[10px] uppercase tracking-[0.22em] text-graphite">
@@ -948,12 +1009,20 @@ function Contato() {
                         id="whatsapp"
                         name="whatsapp"
                         type="tel"
+                        inputMode="numeric"
                         required
                         autoComplete="tel"
-                        className="mt-2 w-full border-b border-border bg-transparent py-2.5 text-[15px] text-primary placeholder:text-graphite/50 focus:border-primary focus:outline-none"
+                        value={telefone}
+                        onChange={(e) => setTelefone(maskPhoneBR(e.target.value))}
+                        aria-invalid={!!errors.telefone}
+                        className="mt-2 w-full border-b border-border bg-transparent py-2.5 text-[15px] text-primary placeholder:text-graphite/50 focus:border-primary focus:outline-none aria-[invalid=true]:border-destructive"
                         placeholder="(00) 00000-0000"
                       />
+                      {errors.telefone ? (
+                        <p className="mt-2 text-[11px] text-destructive">{errors.telefone}</p>
+                      ) : null}
                     </div>
+
 
                     <fieldset>
                       <legend className="text-[10px] uppercase tracking-[0.22em] text-graphite">Perfil</legend>
@@ -985,9 +1054,15 @@ function Contato() {
                     </fieldset>
 
                     <div className="pt-1">
-                      <Button type="submit" variant="primary" className="w-full !py-4">
-                        Solicitar Orçamento
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        disabled={isSubmitting}
+                        className="w-full !py-4 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        {isSubmitting ? "Enviando..." : "Solicitar Orçamento"}
                       </Button>
+
                       <p className="mt-4 text-[11px] leading-relaxed text-graphite">
                         Ao enviar, você concorda com o contato comercial em conformidade com a LGPD.
                       </p>
