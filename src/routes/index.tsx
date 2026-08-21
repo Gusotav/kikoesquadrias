@@ -1138,7 +1138,7 @@ function Footer() {
             <ul className="mt-4 space-y-2 text-[13px]">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
-                  <a href={l.href} className="transition-colors hover:text-white">{l.label}</a>
+                  <a href={l.href} onClick={anchorClick(l.href)} className="transition-colors hover:text-white">{l.label}</a>
                 </li>
               ))}
             </ul>
