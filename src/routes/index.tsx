@@ -46,7 +46,26 @@ export const Route = createFileRoute("/")({
   component: KikoLanding,
 });
 
+/* ----------------------------- âncoras ----------------------------- */
+
+/** Scroll suave para uma seção sem alterar a URL (evita PageView falso). */
+function scrollToSection(id: string) {
+  if (typeof document === "undefined") return;
+  const target = id === "top" ? document.body : document.getElementById(id);
+  target?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function anchorClick(href: string, after?: () => void) {
+  return (e: React.MouseEvent) => {
+    if (!href.startsWith("#")) return;
+    e.preventDefault();
+    scrollToSection(href.slice(1));
+    after?.();
+  };
+}
+
 /* ----------------------------- hooks ----------------------------- */
+
 
 function useScrolled(threshold = 60) {
   const [scrolled, setScrolled] = useState(false);
