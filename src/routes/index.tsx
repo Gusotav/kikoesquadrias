@@ -58,7 +58,7 @@ function scrollToSection(id: string) {
 }
 
 function anchorClick(href: string, after?: () => void) {
-  return (e: React.MouseEvent) => {
+  return (e: ReactMouseEvent) => {
     if (!href.startsWith("#")) return;
     e.preventDefault();
     scrollToSection(href.slice(1));
