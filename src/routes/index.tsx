@@ -12,7 +12,9 @@ import {
 
 import { toast } from "sonner";
 
+import { setAdvancedMatching, trackWebEvent } from "@/lib/fbpixel";
 import { trackLeadConversion } from "@/lib/googleAds";
+
 import { submitLead } from "@/lib/leads.functions";
 import { getUtmData, leadSchema, maskPhoneBR } from "@/lib/lead-utils";
 
