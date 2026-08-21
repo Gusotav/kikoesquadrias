@@ -278,6 +278,8 @@ function Navbar() {
         <div className="hidden lg:block">
           <a
             href="#contato"
+            onClick={anchorClick("#contato")}
+
             className={`inline-flex items-center border px-5 py-2.5 text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 ${
               scrolled
                 ? "border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground"
