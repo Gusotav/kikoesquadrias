@@ -254,6 +254,8 @@ function Navbar() {
               <a
                 key={l.href}
                 href={l.href}
+                onClick={anchorClick(l.href)}
+
                 className={`relative text-[11px] uppercase tracking-[0.18em] transition-colors duration-300 ${
                   isActive
                     ? scrolled
